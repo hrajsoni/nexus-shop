@@ -1,20 +1,97 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS Shop</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/scripts.js" defer></script>
+    <title>NEXUS - Futuristic Shopping Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+<body class="smooth-scroll">
+    <div class="search-overlay" id="searchOverlay">
+        <div class="glass-card rounded-3xl p-8 max-w-2xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Search Products</h3>
+                <button onclick="toggleSearch()" class="text-white hover:text-cyan-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <input type="text" placeholder="Search for products..." class="w-full px-6 py-4 bg-white/10 border border-white/30 rounded-full text-white placeholder-white/60 focus:outline-none focus:border-cyan-400 backdrop-blur-sm mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-card rounded-xl p-4 cursor-pointer hover:border-cyan-400">
+                    <div class="text-cyan-400 mb-2">Quantum Phone X1</div>
+                    <div class="text-white/70 text-sm">$2,999</div>
+                </div>
+                <div class="glass-card rounded-xl p-4 cursor-pointer hover:border-cyan-400">
+                    <div class="text-cyan-400 mb-2">Neural VR Headset</div>
+                    <div class="text-white/70 text-sm">$1,799</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="cartModal">
+        <div class="glass-card rounded-3xl p-8 max-w-2xl w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Shopping Cart</h3>
+                <button onclick="toggleCart()" class="text-white hover:text-cyan-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="cartItems" class="space-y-4 mb-6">
+                <div class="text-white/70 text-center py-8">Your cart is empty</div>
+            </div>
+            <div class="border-t border-white/20 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-bold text-white">Total:</span>
+                    <span class="text-2xl font-bold text-gradient" id="cartTotal">$0</span>
+                </div>
+                <button class="w-full gradient-btn py-3 rounded-full text-white font-bold">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 floating-nav rounded-full px-8 py-4">
+        <div class="flex items-center space-x-8">
+            <div class="orbitron text-2xl font-bold text-gradient cursor-pointer" onclick="showPage('home')">NEXUS</div>
+            <div class="hidden md:flex space-x-6">
+                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('home')">Home</span>
+                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('products')">Products</span>
+                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('categories')">Categories</span>
+                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('about')">About</span>
+                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('contact')">Contact</span>
+            </div>
+            <button class="icon-hover text-white" onclick="toggleSearch()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
-    <h1>Welcome to NEXUS - Futuristic Shopping Experience</h1>
-    <p>Explore amazing products.</p>
+
+    <main>
+        <div class="page active" id="homePage">
+            </div>
+        <div class="page" id="productsPage">
+            </div>
+        <div class="page" id="categoriesPage">
+            </div>
+        <div class="page" id="aboutPage">
+            </div>
+        <div class="page" id="contactPage">
+            </div>
+    </main>
+
+    <section class="py-20 px-4">
+        </section>
+
+    <footer class="py-16 px-4 border-t border-white/20">
+        </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
