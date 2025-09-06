@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - NEXUS Shop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+    <h1>Products</h1>
+    <div class="products" id="product-list"></div>
+
+    <script>
+    fetch('data/products.json').then(res => res.json()).then(products => {
+        const list = document.getElementById('product-list');
+        let html = '';
+        products.forEach(p => {
+            html += `<div class="product-card"><h3>${p.name}</h3><p>${p.description}</p><div>$${p.price.toFixed(2)}</div><a class="button" onclick="addToCart(${p.id})">Add to Cart</a></div>`;
+        });
+        list.innerHTML = html;
+    });
+    </script>
+</body>
+</html>

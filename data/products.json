@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Quantum Phone X1",
+    "description": "Next-gen smartphone with holographic display",
+    "price": 2999.0
+  },
+  {
+    "id": 2,
+    "name": "Neural VR Headset",
+    "description": "Immersive virtual reality with brain interface",
+    "price": 1799.0
+  },
+  {
+    "id": 3,
+    "name": "AI Smart Watch",
+    "description": "Intelligent wearable with health monitoring",
+    "price": 899.0
+  },
+  {
+    "id": 4,
+    "name": "Wireless Earbuds Pro",
+    "description": "Crystal clear audio with noise cancellation",
+    "price": 399.0
+  },
+  {
+    "id": 5,
+    "name": "Holographic Laptop",
+    "description": "Ultra-portable with 3D holographic display",
+    "price": 4999.0
+  },
+  {
+    "id": 6,
+    "name": "Quantum Charger",
+    "description": "Instant wireless charging technology",
+    "price": 299.0
+  }
+]
