@@ -3,95 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Futuristic Shopping Experience</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>Luxe Studio - Premium Digital Solutions</title>
+    <meta name="description" content="Premium digital solutions with cutting-edge design and technology">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS will be linked here -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="smooth-scroll">
-    <div class="search-overlay" id="searchOverlay">
-        <div class="glass-card rounded-3xl p-8 max-w-2xl w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-white">Search Products</h3>
-                <button onclick="toggleSearch()" class="text-white hover:text-cyan-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            <input type="text" placeholder="Search for products..." class="w-full px-6 py-4 bg-white/10 border border-white/30 rounded-full text-white placeholder-white/60 focus:outline-none focus:border-cyan-400 backdrop-blur-sm mb-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="glass-card rounded-xl p-4 cursor-pointer hover:border-cyan-400">
-                    <div class="text-cyan-400 mb-2">Quantum Phone X1</div>
-                    <div class="text-white/70 text-sm">$2,999</div>
-                </div>
-                <div class="glass-card rounded-xl p-4 cursor-pointer hover:border-cyan-400">
-                    <div class="text-cyan-400 mb-2">Neural VR Headset</div>
-                    <div class="text-white/70 text-sm">$1,799</div>
+<body>
+    <!-- Navigation Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav-brand">
+                <div class="logo">
+                    <span class="logo-text">Luxe</span>
+                    <span class="logo-accent">Studio</span>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="modal" id="cartModal">
-        <div class="glass-card rounded-3xl p-8 max-w-2xl w-full mx-4">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-2xl font-bold text-white">Shopping Cart</h3>
-                <button onclick="toggleCart()" class="text-white hover:text-cyan-400">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
+            
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#services" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#portfolio" class="nav-link">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <div id="cartItems" class="space-y-4 mb-6">
-                <div class="text-white/70 text-center py-8">Your cart is empty</div>
-            </div>
-            <div class="border-t border-white/20 pt-4">
-                <div class="flex justify-between items-center mb-4">
-                    <span class="text-xl font-bold text-white">Total:</span>
-                    <span class="text-2xl font-bold text-gradient" id="cartTotal">$0</span>
+            
+            <div class="nav-actions">
+                <button class="btn btn-outline">Get Quote</button>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <button class="w-full gradient-btn py-3 rounded-full text-white font-bold">CHECKOUT</button>
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 floating-nav rounded-full px-8 py-4">
-        <div class="flex items-center space-x-8">
-            <div class="orbitron text-2xl font-bold text-gradient cursor-pointer" onclick="showPage('home')">NEXUS</div>
-            <div class="hidden md:flex space-x-6">
-                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('home')">Home</span>
-                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('products')">Products</span>
-                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('categories')">Categories</span>
-                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('about')">About</span>
-                <span class="nav-item text-white hover:text-cyan-400 transition-all" onclick="showPage('contact')">Contact</span>
-            </div>
-            <button class="icon-hover text-white" onclick="toggleSearch()">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
-            </button>
-        </div>
-    </nav>
-
+    <!-- Hero Section -->
     <main>
-        <div class="page active" id="homePage">
+        <section class="hero" id="home">
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-text">✨ Premium Digital Solutions</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        <span class="title-line">Crafting Digital</span>
+                        <span class="title-line gradient-text">Experiences</span>
+                        <span class="title-line">That Inspire</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        We blend cutting-edge technology with exceptional design to create 
+                        digital solutions that elevate your brand and captivate your audience.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large">
+                            <span>Start Your Project</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button class="btn btn-ghost btn-large">
+                            <span>View Our Work</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="hero-image-container">
+                        <div class="floating-card card-1">
+                            <div class="card-content">
+                                <div class="card-icon">📊</div>
+                                <h3>Analytics</h3>
+                                <p>Real-time insights</p>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-2">
+                            <div class="card-content">
+                                <div class="card-icon">🎨</div>
+                                <h3>Design</h3>
+                                <p>Pixel-perfect UI</p>
+                            </div>
+                        </div>
+                        
+                        <div class="floating-card card-3">
+                            <div class="card-content">
+                                <div class="card-icon">⚡</div>
+                                <h3>Performance</h3>
+                                <p>Lightning fast</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        <div class="page" id="productsPage">
+            
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator">
+                <div class="scroll-mouse">
+                    <div class="scroll-wheel"></div>
+                </div>
+                <span class="scroll-text">Scroll to explore</span>
             </div>
-        <div class="page" id="categoriesPage">
-            </div>
-        <div class="page" id="aboutPage">
-            </div>
-        <div class="page" id="contactPage">
-            </div>
-    </main>
-
-    <section class="py-20 px-4">
         </section>
 
-    <footer class="py-16 px-4 border-t border-white/20">
-        </footer>
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Our Expertise</span>
+                    <h2 class="section-title">Premium Services</h2>
+                    <p class="section-description">
+                        Comprehensive digital solutions tailored to your unique needs
+                    </p>
+                </div>
+                
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">
+                            Custom websites and web applications built with modern technologies
+                        </p>
+                        <ul class="service-features">
+                            <li>Responsive Design</li>
+                            <li>Performance Optimization</li>
+                            <li>SEO Integration</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="service-card featured">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Brand Identity</h3>
+                        <p class="service-description">
+                            Complete brand identity solutions that make lasting impressions
+                        </p>
+                        <ul class="service-features">
+                            <li>Logo Design</li>
+                            <li>Brand Guidelines</li>
+                            <li>Visual Identity</li>
+                        </ul>
+                    </article>
+                    
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Digital Strategy</h3>
+                        <p class="service-description">
+                            Strategic planning to maximize your digital presence and ROI
+                        </p>
+                        <ul class="service-features">
+                            <li>Market Analysis</li>
+                            <li>Growth Strategy</li>
+                            <li>Performance Tracking</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
 
+        <!-- Portfolio Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Our Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">
+                        Showcasing our finest digital creations
+                    </p>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <span class="placeholder-text">E-Commerce Platform</span>
+                            </div>
+                            <div class="portfolio-overlay">
+                                <button class="portfolio-btn">View Project</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Luxury Fashion Store</h3>
+                            <p class="portfolio-category">E-Commerce • Branding</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <span class="placeholder-text">SaaS Dashboard</span>
+                            </div>
+                            <div class="portfolio-overlay">
+                                <button class="portfolio-btn">View Project</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Analytics Dashboard</h3>
+                            <p class="portfolio-category">Web App • UI/UX</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="portfolio-placeholder">
+                                <span class="placeholder-text">Mobile App</span>
+                            </div>
+                            <div class="portfolio-overlay">
+                                <button class="portfolio-btn">View Project</button>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Fitness Tracking App</h3>
+                            <p class="portfolio-category">Mobile • Health Tech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <span class="section-badge">About Us</span>
+                        <h2 class="section-title">Passionate About Excellence</h2>
+                        <p class="about-description">
+                            We are a team of creative professionals dedicated to pushing the boundaries 
+                            of digital design and development. Our mission is to create exceptional 
+                            digital experiences that drive results.
+                        </p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-number">150+</span>
+                                <span class="stat-label">Projects Completed</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-label">Client Satisfaction</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">5+</span>
+                                <span class="stat-label">Years Experience</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-visual">
+                        <div class="about-image-container">
+                            <div class="about-placeholder">
+                                <span class="placeholder-text">Our Team</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-badge">Get In Touch</span>
+                    <h2 class="section-title">Start Your Project</h2>
+                    <p class="section-description">
+                        Ready to bring your vision to life? Let's discuss your project
+                    </p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project" class="form-label">Project Type</label>
+                                <select id="project" name="project" class="form-select" required>
+                                    <option value="">Select a service</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="brand-identity">Brand Identity</option>
+                                    <option value="digital-strategy">Digital Strategy</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Project Details</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large btn-full">
+                                <span>Send Message</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>New York, NY 10001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="2"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>hello@luxestudio.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-text">Luxe</span>
+                        <span class="logo-accent">Studio</span>
+                    </div>
+                    <p class="footer-description">
+                        Crafting exceptional digital experiences that inspire and engage.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Services</h4>
+                        <ul class="footer-list">
+                            <li><a href="#" class="footer-link">Web Development</a></li>
+                            <li><a href="#" class="footer-link">Brand Identity</a></li>
+                            <li><a href="#" class="footer-link">Digital Strategy</a></li>
+                            <li><a href="#" class="footer-link">Consulting</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Company</h4>
+                        <ul class="footer-list">
+                            <li><a href="#" class="footer-link">About Us</a></li>
+                            <li><a href="#" class="footer-link">Our Team</a></li>
+                            <li><a href="#" class="footer-link">Careers</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 Luxe Studio. All rights reserved.
+                </p>
+                <div class="footer-legal">
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript will be linked here -->
     <script src="script.js"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97af328214bf4850',t:'MTc1NzE3NDYxNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
