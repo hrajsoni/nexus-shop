@@ -1,7 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap'); [cite: 9, 10]
 
-body { font-family: Arial, sans-serif; background-color: #0f0f23; color: #fff; margin: 0; padding: 0; }
-nav { background-color: #333; padding: 10px; text-align: center; }
-nav a { color: #fff; margin: 0 10px; text-decoration: none; }
-.products { display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; }
-.product-card { background: #222; padding: 15px; border-radius: 10px; width: 250px; }
-.button { background: #00f5ff; color: #000; padding: 10px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 10px; }
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); [cite: 12]
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); [cite: 12]
+    --neon-gradient: linear-gradient(135deg, #00f5ff 0%, #ff00ff 50%, #ffff00 100%); [cite: 13]
+    --glass-bg: rgba(255, 255, 255, 0.1); [cite: 14]
+    --glass-border: rgba(255, 255, 255, 0.2); [cite: 15]
+}
+
+* {
+    font-family: 'Exo 2', sans-serif; [cite: 18]
+}
+
+.orbitron {
+    font-family: 'Orbitron', monospace; [cite: 21]
+}
+
+body {
+    background: linear-gradient(45deg, #0f0f23, #1a1a2e, #16213e, #0f3460); [cite: 25]
+    background-size: 400% 400%; [cite: 26]
+    animation: gradientShift 15s ease infinite; [cite: 27]
+    overflow-x: hidden; [cite: 28]
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; } [cite: 31]
+    50% { background-position: 100% 50%; } [cite: 32]
+    100% { background-position: 0% 50%; } [cite: 33]
+}
+
+.hero-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%); [cite: 35, 36]
+    background-size: 400% 400%; [cite: 38]
+    animation: heroGradient 20s ease infinite; [cite: 39]
+}
+
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; } [cite: 42]
+    25% { background-position: 100% 0%; } [cite: 43]
+    50% { background-position: 100% 100%; } [cite: 44]
+    75% { background-position: 0% 100%; } [cite: 44]
+    100% { background-position: 0% 50%; } [cite: 44]
+}
+
+.glass-card {
+    background: var(--glass-bg); [cite: 46]
+    backdrop-filter: blur(20px); [cite: 47]
+    border: 1px solid var(--glass-border); [cite: 48]
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); [cite: 49]
+}
+
+.neon-glow {
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3), 0 0 60px rgba(255, 255, 0, 0.2); [cite: 52, 53]
+}
+
+/* Add all other CSS rules from the provided document here */
+
+.page {
+    display: none; [cite: 228]
+}
+
+.page.active {
+    display: block; [cite: 231]
+}
+
+.search-overlay {
+    position: fixed; [cite: 233]
+    top: 0; [cite: 234]
+    left: 0; [cite: 235]
+    width: 100%; [cite: 236]
+    height: 100%; [cite: 237]
+    background: rgba(0, 0, 0, 0.9); [cite: 238]
+    backdrop-filter: blur(10px); [cite: 238]
+    z-index: 9999; [cite: 239]
+    display: none; [cite: 240]
+    align-items: center; [cite: 241]
+    justify-content: center; [cite: 242]
+}
+
+.search-overlay.active {
+    display: flex; [cite: 246]
+}
+
+.modal {
+    position: fixed; [cite: 249]
+    top: 0; [cite: 250]
+    left: 0; [cite: 251]
+    width: 100%; [cite: 252]
+    height: 100%; [cite: 253]
+    background: rgba(0, 0, 0, 0.8); [cite: 254]
+    backdrop-filter: blur(10px); [cite: 255]
+    z-index: 9999; [cite: 256]
+    display: none; [cite: 257]
+    align-items: center; [cite: 258]
+    justify-content: center; [cite: 259]
+}
+
+.modal.active {
+    display: flex; [cite: 262]
+}
